@@ -6,6 +6,18 @@ class LivroController {
             res.status(200).json(livros);
         })
     }
+    
+    static listarLivroPorId = (req, res) => {
+        const id = req.params.id;
+
+        livros.findById(id, (err, livro) => {
+            if(err) {
+                res.status(404).send({message: `${err.message}Status inesistente`})
+            } else {
+                res.status(200).send(livro);
+            }
+        })
+    }
 
     static cadastrarLivro = (req, res) => {
         let livro = new livros(req.body);
@@ -29,6 +41,7 @@ class LivroController {
             }
         })
     }
+
 
 }
 
