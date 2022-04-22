@@ -1,4 +1,3 @@
-import req from "express";
 import livros from "../models/Livro.js";
 
 class LivroController {
