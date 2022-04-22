@@ -12,12 +12,22 @@ class LivroController {
     static listarLivroPorId = (req, res) => {
         const id = req.params.id;
 
-        livros.findById(id, (err, livro) => {
+        livros.findById(id)
+        .populate('autor', 'nome')
+        .exec((err, livro) => {
             if(err) {
                 res.status(404).send({message: `${err.message}Status inesistente`})
             } else {
                 res.status(200).send(livro);
             }
+        })
+    }
+
+    static listarLivroPorEditora = (req, res) => {
+        const editora = req.query.editora
+
+        livros.find({"editora": editora}, {}, (err, livro) => {
+            res.status(200).send(livro);
         })
     }
 
