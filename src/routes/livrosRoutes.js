@@ -8,5 +8,6 @@ router
     .post("/livros", LivroController.cadastrarLivro)
     .put("/livros/:id", LivroController.atualizaLivro)
     .get("/livros/:id", LivroController.listarLivroPorId)
+    .delete("/livros/:id", LivroController.excluirLivro)
 
 export default router;
